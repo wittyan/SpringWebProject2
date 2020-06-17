@@ -43,9 +43,9 @@
 					<c:otherwise>
 						<li><a href="/logout.do">로그아웃</a></li>
 					</c:otherwise>
+				</c:choose>
 					<li><a href="/signup.do">회원가입</a></li>
 					<li><a href="#">마이페이지</a></li>
-				</c:choose>
 			</nav>
 		</div>
 		<!-- ################################################################################################ -->
