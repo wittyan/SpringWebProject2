@@ -5,5 +5,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="an.com.bean">
 
+	<select id="selectCommunity" parameterType="java.util.HashMap"
+		resultType="an.com.bean.CommunityBean">
+		SELECT *
+		FROM(
+		SELECT ROWNUM RM,NO, WRITER, TITLE, PASSWORD,
+		CONTENTS, HIT, FILENAME, REGDATE
+		FROM(
+		SELECT NO, WRITER, TITLE, PASSWORD,
+		CONTENTS, HIT, FILENAME, TO_CHAR(REGDATE,'YYYY-MM-DD') REGDATE
+		FROM COMMUNITYTABLE
+		ORDER BY REF DESC,STEP,LEV
+		))
+		WHERE RM BETWEEN #{start} AND #{end}
+
+	</select>
+
+	<insert id="insertCommunity"
+		parameterType="an.com.bean.CommunityBean">
+
+		INSERT INTO COMMUNITYTABLE
+		VALUES(#{no},#{writer},#{title},#{password},#{contents},#{hit},#{filename},#{date})
+
+	</insert>
+
+<!-- Sequence -->
+	<select id="getCommunitySeq" resultType="int">
+		SELECT COM_SEQ FROM DUAL
+	</select>
+	
+	<select id="getCommunityTotalRow" resultType="int">
+		SELECT COUNT(*)
+		FROM COMMUNITYTABLE
+	</select>
+	
 
 </mapper>
