@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="function"
 	uri="http://java.sun.com/jsp/jstl/functions"%>
-	
+
 <!DOCTYPE html>
 
 <html lang="">
@@ -44,8 +44,8 @@
 						<li><a href="/logout.do">로그아웃</a></li>
 					</c:otherwise>
 				</c:choose>
-					<li><a href="/signup.do">회원가입</a></li>
-					<li><a href="#">마이페이지</a></li>
+				<li><a href="/signup.do">회원가입</a></li>
+				<li><a href="#">마이페이지</a></li>
 			</nav>
 		</div>
 		<!-- ################################################################################################ -->
@@ -148,12 +148,17 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>155</td>
-							<td>안녕하세요</td>
-							<td>안성수</td>
-							<td>20/04/30</td>
-							<td>2</td>
+					<c:if test="${list ne null}">
+						<c:forEach var="i" items="${list }">
+							<tr>
+								<td>${i.no     }</td>
+								<td>${i.title  }</td>
+								<td>${i.writer }</td>
+								<td>${i.date   }</td>
+								<td>${i.hit    }</td>
+							</tr>
+						</c:forEach>
+					</c:if>
 					</tbody>
 				</table>
 				<hr />

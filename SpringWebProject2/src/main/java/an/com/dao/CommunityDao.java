@@ -29,6 +29,11 @@ public class CommunityDao extends SqlSessionDaoSupport {
 		this.getSqlSession().insert("insertCommunity", cb);
 	}
 
+	public Integer getCommunityTotalRow() {
+		
+		return this.getSqlSession().selectOne("getCommunityTotalRow");
+		
+	}
 	public Integer getCommunitySeq() {
 
 		return this.getSqlSession().selectOne("getCommunitySeq");

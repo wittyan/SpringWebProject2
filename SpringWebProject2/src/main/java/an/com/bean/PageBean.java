@@ -9,6 +9,7 @@ public class PageBean {
 	private int startPage;
 	private int endPage;
 	
+	
 	public PageBean() {
 		super();
 	}
