@@ -1,5 +1,6 @@
+
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="UTF-8"%>
+	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="function"
 	uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -9,28 +10,18 @@
 <html lang="">
 <!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
 <head>
-<title>ì»¤ë®¤ë‹ˆí‹°</title>
+<title>Ä¿¹Â´ÏÆ¼</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
-<script type="text/javascript" src="../script/board.js">
-	
+<script type="text/javascript" src="/script/board.js">
 </script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link href="../layout/styles/layout.css" rel="stylesheet"
 	type="text/css" media="all">
-<style type="text/css">
-  table tr th{
- 	  text-align:center;
-  }
-  table tr td:not(.title){
- 	  text-align:center;
-  }
-  
-</style>
 </head>
 <body id="top">
 	<!-- ################################################################################################ -->
@@ -47,14 +38,14 @@
 			<nav id="mainav" class="fl_right">
 				<c:choose>
 					<c:when test="${id eq null}">
-						<li><a href="/login.do">ë¡œê·¸ì¸</a></li>
+						<li><a href="/login.do">·Î±×ÀÎ</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="/logout.do">ë¡œê·¸ì•„ì›ƒ</a></li>
+						<li><a href="/logout.do">·Î±×¾Æ¿ô</a></li>
 					</c:otherwise>
 				</c:choose>
-				<li><a href="/signup.do">íšŒì›ê°€ìž…</a></li>
-				<li><a href="#">ë§ˆì´íŽ˜ì´ì§€</a></li>
+				<li><a href="/signup.do">È¸¿ø°¡ÀÔ</a></li>
+				<li><a href="#">¸¶ÀÌÆäÀÌÁö</a></li>
 			</nav>
 		</div>
 		<!-- ################################################################################################ -->
@@ -64,18 +55,18 @@
 			<div id="logo" class="fl_left">
 				<!-- ################################################################################################ -->
 				<h1>
-					<a href="../index.jsp" style="font-family: ë§‘ì€ ê³ ë”•;">ìžì „ê±° ì •ë³´</a>
+					<a href="../index.jsp" style="font-family: ¸¼Àº °íµñ;">ÀÚÀü°Å Á¤º¸</a>
 				</h1>
 				<!-- ################################################################################################ -->
 			</div>
 			<nav id="mainav" class="fl_right">
 				<!-- ################################################################################################ -->
 
-				<li><a href="/mapinfo.do">ì „êµ­ ëŒ€ì—¬ì†Œ ì¡°íšŒ</a></li>
-				<li><a href="#">ìžì „ê±° ê¸¸</a></li>
-				<li><a href="#">ì¤‘ê³ ìž¥í„°</a></li>
-				<li><a href="/gallery.do">ìžì „ê±° ê°¤ëŸ¬ë¦¬</a></li>
-				<li><a href="/community.do">ì»¤ë®¤ë‹ˆí‹°</a></li>
+				<li><a href="/mapinfo.do">Àü±¹ ´ë¿©¼Ò Á¶È¸</a></li>
+				<li><a href="#">ÀÚÀü°Å ±æ</a></li>
+				<li><a href="#">Áß°íÀåÅÍ</a></li>
+				<li><a href="/gallery.do">ÀÚÀü°Å °¶·¯¸®</a></li>
+				<li><a href="/community.do">Ä¿¹Â´ÏÆ¼</a></li>
 				<li><a href="#">FAQ</a></li>
 				</ul>
 				<!-- ################################################################################################ -->
@@ -104,12 +95,12 @@
 		<main class="hoc container clear"> <!-- main body --> <!-- ################################################################################################ -->
 		<div class="sidebar one_quarter first">
 			<!-- ################################################################################################ -->
-			<h6>ì»¤ë®¤ë‹ˆí‹°</h6>
+			<h6>Ä¿¹Â´ÏÆ¼</h6>
 			<nav class="sdb_holder">
 				<ul>
-					<li><a id="freeBoard" href="javascript:;">ìžìœ  ê²Œì‹œíŒ</a></li>
+					<li><a id="freeBoard" href="javascript:;">ÀÚÀ¯ °Ô½ÃÆÇ</a></li>
 
-					<li><a href="#">ì¤‘ê³  ê±°ëž˜</a></li>
+					<li><a href="#">Áß°í °Å·¡</a></li>
 				</ul>
 			</nav>
 			<div class="sdb_holder">
@@ -145,73 +136,44 @@
 
 		<div id="contents" class="content three_quarter">
 			<!-- ################################################################################################ -->
-			<div id="freebrdcontents">
-				<table class="table table-hover">
-					<thead>
-					<colgroup>
+			<div id="qnaRegi">
+				<h1 align="center"
+					style="font-weight: bold; size: 50px; margin-top: 50px;">±Û¾²±â</h1>
+				<form action="insert.do?page=${param.page }" name="qnaFrm" method="POST"
+					enctype="multipart/form-data" accept-charset="utf-8">
+					<table>
+						<colgroup>
 
-							<col width="30px">
-							<col width="200px">
-							<col width="50px">
-							<col width="50px">
-							<col width="30px">
+							<col width="100px">
 
 						</colgroup>
-						<tr>
-							<th>ë²ˆí˜¸</th>
-							<th>ì œëª©</th>
-							<th>ìž‘ì„±ìž</th>
-							<th>ë‚ ì§œ</th>
-							<th>ì¡°íšŒìˆ˜</th>
-						</tr>
-					</thead>
-					<tbody>
-					<c:if test="${list ne null}">
-						<c:forEach var="i" items="${list }">
+						<tbody>
 							<tr>
-								<td>${i.no     }</td>
-								<td class="title">${i.title  }</td>
-								<td>${i.writer }</td>
-								<td>${i.regdate   }</td>
-								<td>${i.hit    }</td>
+								<td><label>Á¦¸ñ</label></td>
+								<td><input type="text" name="title"
+									value="${sqb ne null ? sqb.qtitle: ''}" size="70" ></td>
 							</tr>
-						</c:forEach>
-					</c:if>
-					</tbody>
-				</table>
-				<hr />
-				<a href ="/write.do?page=${pageBean.currentPage }" class="btn btn-default pull-right">ê¸€ì“°ê¸°</a>
+						
+							<tr>
+								<td><label>³»¿ë</label></td>
+								<td><textarea id="txtarea" name="contents" rows="10" cols="70">${sqb ne null ? sqb.qcontents: ''}</textarea>
+								</td>
+							</tr>
+							<tr>
+								<td><label>Ã·ºÎÆÄÀÏ</label></td>
+								<td><input type="text" size="20" readonly="readonly"
+									name="fileField" value="${sqb ne null ? seb.qfilename: ''}"
+									disabled="disabled"> <input type="file" name="file">
+								</td>
+							</tr>
+						</tbody>
+					</table>
 
-				<div class="text-center">
-					<ul class="pagination">
-						<c:choose>
-							<c:when test="${pageBean.currentPage<pageBean.endPage}">
-								<li><a href="/community.do?page=${pageBean.currentPage - 1}">&lt;</a></li>
-							</c:when>
-							<c:otherwise>							
-								<li><a href="#">&lt;</a></li>
-							</c:otherwise>
-						</c:choose>
-						<c:forEach var="i" begin="${pageBean.startPage }" end="${pageBean.endPage }">
-							<c:choose>
-								<c:when test="${i eq pageBean.currentPage}">
-									<li><a href="#"><font color="red">${i }</font></a></li>
-								</c:when>
-								<c:otherwise>
-									<li><a href="/community.do?page=${i}">${i }</a></li>									
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-						<c:choose>
-							<c:when test="${pageBean.currentPage<pageBean.endPage}">
-								<li><a href="/community.do?page=${pageBean.currentPage + 1}">&gt;</a></li>
-							</c:when>
-								<c:otherwise>							
-								<li><a href="#">&gt;</a></li>
-							</c:otherwise>
-						</c:choose>
-					</ul>
-				</div>
+					<%--     			<input type="hidden" name="no" value="${mode eq 'modify'?sqb.qno:''}"> --%>
+					
+					<a id="regbtn" class="btn btn-default pull-right">µî·ÏÇÏ±â</a>
+					<a href="/community.do?${param.page }"class="btn btn-default pull-left">¸ñ·ÏÀ¸·Î</a>
+				</form>
 			</div>
 
 			<!-- ################################################################################################ -->
@@ -244,5 +206,8 @@
 	<script src="../layout/scripts/jquery.min.js"></script>
 	<script src="../layout/scripts/jquery.backtotop.js"></script>
 	<script src="../layout/scripts/jquery.mobilemenu.js"></script>
+</body>
+</html>
+
 </body>
 </html>

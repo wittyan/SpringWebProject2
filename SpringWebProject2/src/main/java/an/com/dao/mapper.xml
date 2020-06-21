@@ -16,6 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		CONTENTS, HIT, FILENAME, TO_CHAR(REGDATE,'YYYY-MM-DD') REGDATE
 		FROM COMMUNITYTABLE
 <!-- 		ORDER BY REF DESC,STEP,LEV -->
+		ORDER BY NO DESC
 		))
 		WHERE RM BETWEEN #{start} AND #{end}
 
@@ -25,13 +26,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="an.com.bean.CommunityBean">
 
 		INSERT INTO COMMUNITYTABLE
-		VALUES(#{no},#{writer},#{title},#{password},#{contents},#{hit},#{filename},#{date})
+		VALUES(#{no},#{writer},#{title},#{password},#{contents},0,#{filename},sysdate)
 
 	</insert>
 
 <!-- Sequence -->
 	<select id="getCommunitySeq" resultType="int">
-		SELECT COM_SEQ FROM DUAL
+		SELECT COM_SEQ.NEXTVAL FROM DUAL
 	</select>
 	
 	<select id="getCommunityTotalRow" resultType="int">

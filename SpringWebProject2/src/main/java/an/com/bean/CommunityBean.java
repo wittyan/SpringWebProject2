@@ -9,14 +9,14 @@ public class CommunityBean {
 	String contents;
 	int hit;
 	String filename;
-	String date;
+	String regdate;
 	
 	
 	public CommunityBean() {
 		super();
 	}
 	public CommunityBean(int no, String writer, String title, String password, String contents, int hit,
-			String filename, String date) {
+			String filename, String regdate) {
 		super();
 		this.no = no;
 		this.writer = writer;
@@ -25,7 +25,7 @@ public class CommunityBean {
 		this.contents = contents;
 		this.hit = hit;
 		this.filename = filename;
-		this.date = date;
+		this.regdate = regdate;
 	}
 	public int getNo() {
 		return no;
@@ -69,16 +69,16 @@ public class CommunityBean {
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
-	public String getDate() {
-		return date;
+	public String getRegdate() {
+		return regdate;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
 	}
 	@Override
 	public String toString() {
 		return "CommunityBean [no=" + no + ", writer=" + writer + ", title=" + title + ", password=" + password
-				+ ", contents=" + contents + ", hit=" + hit + ", filename=" + filename + ", date=" + date + "]";
+				+ ", contents=" + contents + ", hit=" + hit + ", filename=" + filename + ", regdate=" + regdate + "]";
 	}
 	
 	

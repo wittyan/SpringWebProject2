@@ -22,15 +22,74 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link href="../layout/styles/layout.css" rel="stylesheet"
 	type="text/css" media="all">
-<style type="text/css">
-  table tr th{
- 	  text-align:center;
-  }
-  table tr td:not(.title){
- 	  text-align:center;
-  }
-  
+
+<style>
+table tr td {
+	text-align: left;
+}
+
+.contents {
+	margin: 50px auto;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+.btnGroup {
+	display:inline;
+	float: right;
+	margin-bottom: 20px;
+}
+
+.table, tr, .th, td {
+	border-top: #000;
+	border: 1px solid #000;
+}
+tr#no th,tr#no td{
+	height : 40px;
+}
+tr#regdate th,tr#regdate td{
+	height : 40px;
+}
+tr#title th,tr#title td{
+	height : 40px;
+}
+tr#writer th,tr#writer td{
+	height : 40px;
+}
+tr#contents th,tr#contents td{
+	height : 500px;
+}
+
+table tr th{
+	text-aligin:center;
+}
+.ftr {
+	border-top: 1px solid black;
+}
+
+.th {
+	width: 10%;
+}
+
+/* .content th, .content td { */
+/* 	height: 200px; */
+/* 	line-height: 200px; */
+/* } */
+
+/* .imgFile th { */
+/* 	height: 100px; */
+/* 	line-height: 100px; */
+/* } */
+
+/* .imgFile img { */
+/* 	display: block; */
+/* 	width: 100px; */
+/* 	height: 100px; */
+/* } */
 </style>
+
+
 </head>
 <body id="top">
 	<!-- ################################################################################################ -->
@@ -145,74 +204,61 @@
 
 		<div id="contents" class="content three_quarter">
 			<!-- ################################################################################################ -->
-			<div id="freebrdcontents">
-				<table class="table table-hover">
-					<thead>
-					<colgroup>
+			
+	<div class="contents">
+		<div class="btnGroup">
 
-							<col width="30px">
-							<col width="200px">
-							<col width="50px">
-							<col width="50px">
-							<col width="30px">
+			<button class="back">
+				<a id="aback"
+					href="communityList.do?type=qna&no=${no }&page=${pageData }">목록</a>
+			</button>
+			
+			<button class="mod">
+				<a id="aedit"
+					href="qnaForm.do?type=qna&mode=modify&page=${pageData }&no=${no }">수정</a>
+			</button>
+			<button class="del">
+				<a id="adelete" href="delete.do?type=qna&no=${no }">삭제</a>
+			</button>
+			
+			<button class="reply">
+				<a id="areply"
+					href="qnaForm.do?type=qna&mode=reply&page=${pageData }&ref=${sqb.ref }&lev=${sqb.lev}&pnum=${sqb.qno}&step=${sqb.step}">답글</a>
+			</button>
+			
+		</div>
+		<div>
 
-						</colgroup>
-						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>날짜</th>
-							<th>조회수</th>
-						</tr>
-					</thead>
-					<tbody>
-					<c:if test="${list ne null}">
-						<c:forEach var="i" items="${list }">
-							<tr>
-								<td>${i.no     }</td>
-								<td class="title">${i.title  }</td>
-								<td>${i.writer }</td>
-								<td>${i.regdate   }</td>
-								<td>${i.hit    }</td>
-							</tr>
-						</c:forEach>
-					</c:if>
-					</tbody>
-				</table>
-				<hr />
-				<a href ="/write.do?page=${pageBean.currentPage }" class="btn btn-default pull-right">글쓰기</a>
+			<table class="table" id="title">
+				<tr class="ftr" id="title">
+					<th class="th" >제목</th>
+					<td></td>
+				</tr>
+				<tr class="ftr" id="no">
+					<th class="th" >글번호</th>
+					<td></td>
+				</tr>
+				<tr class="ftr" id="regdate">
+					<th class="th" >작성일</th>
+					<td></td>
+				</tr>
+				<tr class="ftr" id="writer">
+					<th class="th" >작성자</th>
+					<td></td>
+				</tr>
+				<tr class="content" id="contents">
+					<th class="th">내용</th>
+					<td></td>
+				</tr>
+				<tr class="imgFile" id="file">
+					<th class="th">첨부파일</th>
+					<td><img alt=""
+						src="/uploadFolder/noimg.jpg"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
 
-				<div class="text-center">
-					<ul class="pagination">
-						<c:choose>
-							<c:when test="${pageBean.currentPage<pageBean.endPage}">
-								<li><a href="/community.do?page=${pageBean.currentPage - 1}">&lt;</a></li>
-							</c:when>
-							<c:otherwise>							
-								<li><a href="#">&lt;</a></li>
-							</c:otherwise>
-						</c:choose>
-						<c:forEach var="i" begin="${pageBean.startPage }" end="${pageBean.endPage }">
-							<c:choose>
-								<c:when test="${i eq pageBean.currentPage}">
-									<li><a href="#"><font color="red">${i }</font></a></li>
-								</c:when>
-								<c:otherwise>
-									<li><a href="/community.do?page=${i}">${i }</a></li>									
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-						<c:choose>
-							<c:when test="${pageBean.currentPage<pageBean.endPage}">
-								<li><a href="/community.do?page=${pageBean.currentPage + 1}">&gt;</a></li>
-							</c:when>
-								<c:otherwise>							
-								<li><a href="#">&gt;</a></li>
-							</c:otherwise>
-						</c:choose>
-					</ul>
-				</div>
-			</div>
 
 			<!-- ################################################################################################ -->
 		</div>
